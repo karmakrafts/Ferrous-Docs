@@ -39,7 +39,15 @@ Each builtin type in the language maps to a hard-coded short-hand name:
 If a derived type is used, \textbf{P} is appended to the mangled name of the base type
 if the derived type attribute indicates a pointer, otherwise \textbf{R} shall be appended to
 indicate a reference.
-\noindent
+\newline\newline
 This would mean that a function with the name \textbf{foo}
 and the parameter types \textbf{usize}, \textbf{usize}, \textbf{\&i32} and \textbf{**void}
 would have a mangled name of \textbf{foouZuZsIRVPP}.
+\newline\newline
+Another aspect which plays into mangling is namespaces, or modules as Ferrous calls them.
+For each component of a qualified identifier, that is every single identifier between each
+\textbf{::}, a \textbf{M} will be inserted to join the components together.
+\newline\newline
+That means if we have the same function \textbf{foo} from before, but the function now lives
+inside the \textbf{library} module, the mangled name of the function will now be
+\textbf{libraryMfoouZuZsIRVPP}.
