@@ -1,0 +1,12 @@
+stages:
+  - build
+build:
+  stage: build
+  script:
+    - make html
+    - cp -r _build/html /var/www/ferrous-spec
+  only:
+    - master
+  tags:
+    - linux
+
