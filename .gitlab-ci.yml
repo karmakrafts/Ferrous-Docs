@@ -4,8 +4,8 @@ build:
   stage: build
   script:
     - make html
-    - mv -f _build/html _build/ferrous-spec
-    - cp -r _build/ferrous-spec /var/www
+    - mv -f _build/html _build/ferrous-docs
+    - cp -r _build/ferrous-docs /var/www
   only:
     - master
   tags:
