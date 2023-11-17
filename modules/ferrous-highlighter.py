@@ -19,9 +19,7 @@ class FerrousLexer(RegexLexer):
     mimetypes = ['text/x-ferrous']
     tokens = {
         'root': [
-            (r'(//.*?)(\n)', bygroups(
-                Comment.Single, 
-                Whitespace)),
+            (r'(//.*?)(\n)', bygroups(Comment.Single, Whitespace)),
             (r'/\*.*?\*/', Comment.Multiline),
             include('attrib_usage'),
             include('function'),
@@ -38,49 +36,15 @@ class FerrousLexer(RegexLexer):
             include('ident')
         ],
         'ptr_type': [
-            (r'(\*)([^\s]+)', bygroups(
-                Punctuation, 
-                using(this)))
+            (r'(\*)([^\s]+)', bygroups(Punctuation, using(this)))
         ],
         'ref_type': [
-            (r'(&)([^\s]+)', bygroups(
-                Punctuation, 
-                using(this)))
+            (r'(&)([^\s]+)', bygroups(Punctuation, using(this)))
         ],
         'function': [
-            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))(\s*)(:)(\s*)([^\s]+)(\s*)({)([^}]+)(})', bygroups(
-                Keyword,
-                Whitespace,
-                using(this),
-                Punctuation,
-                using(this),
-                Punctuation,
-                Whitespace,
-                Punctuation,
-                Whitespace,
-                using(this),
-                Whitespace,
-                Punctuation,
-                using(this),
-                Punctuation)),
-            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))(\s*)(:)(\s*)([^\s]+)', bygroups(
-                Keyword,
-                Whitespace,
-                using(this),
-                Punctuation,
-                using(this),
-                Punctuation,
-                Whitespace,
-                Punctuation,
-                Whitespace,
-                using(this))),
-            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))', bygroups(
-                Keyword,
-                Whitespace,
-                using(this),
-                Punctuation,
-                using(this),
-                Punctuation))
+            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))(\s*)(:)(\s*)([^\s]+)(\s*)({)([^}]+)(})', bygroups(Keyword, Whitespace, using(this), Punctuation, using(this), Punctuation, Whitespace, Punctuation, Whitespace, using(this), Whitespace, Punctuation, using(this), Punctuation)),
+            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))(\s*)(:)(\s*)([^\s]+)', bygroups(Keyword, Whitespace, using(this), Punctuation, using(this), Punctuation, Whitespace, Punctuation, Whitespace, using(this))),
+            (r'(\bfun\b)(\s*)([^\(\s]+)(\()([^\)]+)(\))', bygroups(Keyword, Whitespace, using(this), Punctuation, using(this), Punctuation))
         ],
         'param_list': [
 
@@ -89,11 +53,7 @@ class FerrousLexer(RegexLexer):
             (r'@\s*\b[a-zA-Z_]+[a-zA-Z_0-9]*\b', Name.Decorator)
         ],
         'callconv_mod': [
-            (r'(\bcallconv\b)\s*(\()([^\)]+)(\))', bygroups(
-                Keyword, 
-                Punctuation, 
-                Name, 
-                Punctuation))
+            (r'(\bcallconv\b)\s*(\()([^\)]+)(\))', bygroups(Keyword, Punctuation, Name, Punctuation))
         ],
         'keyword': [
             include('misc_keyword'),
