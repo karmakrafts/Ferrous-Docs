@@ -10,12 +10,6 @@ The official documentation source for the Ferrous programming language.
    The Pygments syntax highlighter for Ferrous is highly experimental
    and you may experience some erroneous highlighting in certain cases.
    This is actively being worked on.
-   
-   .. code-block:: Ferrous
-   
-      fun main(num_args: i32, args: **char): i32 {
-         return 0
-      }
 
 .. toctree::
    :maxdepth: 4
