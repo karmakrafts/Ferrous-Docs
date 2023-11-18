@@ -5,13 +5,8 @@ way of how the compiler mangles names of types and functions.
 If a compiler implementation implements the ABI correctly, it produces
 modules which are binary compatible to Ferrous modules.
 
-Mangling
---------
-Mangling is the process of transforming the name of a type or function
-during compile time, mainly to avoid possible collissions.
-
 Builtin Mangling
-~~~~~~~~~~~~~~~~
+----------------
 Builtin types are treated specially during mangling to save some
 space in the identifier strings of types and functions.
 The following table denotes all valid mangled builtin type names:
@@ -53,7 +48,7 @@ The following table denotes all valid mangled builtin type names:
 	  - T
 
 Type Mangling
-~~~~~~~~~~~~~
+-------------
 Type mangling is applied to derived types, that is types which are either
 any depth of pointer or a reference, as well as any UDT with generic parameters.
 
@@ -91,7 +86,7 @@ And its usage looks as follows
 The resulting mangled type name will be ``Foo$TuZ``.
 
 Function Mangling
-~~~~~~~~~~~~~~~~~
+-----------------
 Function mangling is always applied to prevent collissions for overloaded
 functions and monomorphized functions with generic parameters.
 
