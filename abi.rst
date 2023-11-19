@@ -67,9 +67,9 @@ The same applies for derived types whose backing type is a UDT.
 
 Another case which involes mangling of the type name is when
 the given type has any number of generic parameters.
-The compiler will append a single ``$`` to the mangled type name
-followed by the concatinated list of mangled generic parameter
-types during monomorphization of the given UDT.
+The compiler will append a pair of angle brackets (``<>``) to the mangled type name
+which contain the concatinated list of mangled generic parameter
+type names during monomorphization of the given UDT.
 
 For example, if the type is
 
@@ -83,7 +83,7 @@ And its usage looks as follows
 
 	Foo<bool, usize>
 
-The resulting mangled type name will be ``Foo$TuZ``.
+The resulting mangled type name will be ``Foo<TuZ>``.
 
 Function Mangling
 -----------------
