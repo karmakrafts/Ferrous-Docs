@@ -25,8 +25,6 @@ Other Links
 ===========
 Other links related to the Ferrous project like repositories and references.
 
-Source Code
------------
 * `Vanadium BSC Frontend`_
 * `Manganese BSC Backend`_
 * `Syntax Highlighters`_
