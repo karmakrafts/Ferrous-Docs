@@ -21,12 +21,6 @@ The official documentation source for the Ferrous programming language.
    functions
    inline_asm
 
-Indices and Tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
-
 Other Links
 ===========
 Other links related to the Ferrous project like repositories and references.
