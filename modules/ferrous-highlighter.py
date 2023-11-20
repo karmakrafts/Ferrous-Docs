@@ -35,6 +35,7 @@ class FerrousLexer(RegexLexer):
             include('mod_block'),
             include('udt'),
             include('function'),
+            include('statement'),
             include('misc_keyword'),
             include('default')
         ],
@@ -76,10 +77,30 @@ class FerrousLexer(RegexLexer):
             (r'[,;:)\s]', Punctuation, '#pop'),
             include('type')
         ],
+        'type_alias': [
+            (r'(\btype\b)(\s*)([^\s=]+)(\s*)', bygroups(Keyword, Whitespace, Name, Whitespace), 'type_alias_type')
+        ],
+        'type_alias_type': [
+            (r';|$', Punctuation, '#pop'),
+            include('type')
+        ],
+        'ptr_type': [
+            (r'\*', Punctuation, 'type_mode'),
+            include('type')
+        ],
+        'ref_type': [
+            (r'&', Punctuation, 'type_mode'),
+            include('type')
+        ],
+        'type_mode': [
+            (r'[,;)}\]\s\t\n]', Punctuation, '#pop'),
+            include('type')
+        ],
         'type': [
             (r'\bmut\b', Keyword),
-            (r'[*&]', Punctuation),
             include('function_type'),
+            include('ptr_type'),
+            include('ref_type'),
             include('primitive_keyword'),
             include('qualified_ident'),
             include('ident')
@@ -108,6 +129,7 @@ class FerrousLexer(RegexLexer):
             include('default')
         ],
         'statement': [
+            include('type_alias'),
             include('variable'),
             include('return_statement'),
             include('expr')

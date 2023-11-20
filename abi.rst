@@ -14,7 +14,7 @@ Builtin types are treated specially during mangling to save some
 space in the identifier strings of types and functions.
 The following table denotes all valid mangled builtin type names:
 
-.. list-table:: Mangled Builtin Type Names
+.. list-table:: Mangled Type Names
 	:header-rows: 1
 
 	* - Type
@@ -50,24 +50,26 @@ The following table denotes all valid mangled builtin type names:
 	* - ``bool``
 	  - T
 
-Type Mangling
--------------
+Derived Type Mangling
+---------------------
 Type mangling is applied to derived types, that is types which are either
 any depth of pointer or a reference, as well as any UDT with generic parameters.
 
-If the given type is a pointer, a single ``P`` will be appended during
+If the given type is a pointer, a single ``*`` will be appended during
 mangling for every level of pointer. On the other hand, if the given type 
-is a reference, a single ``R`` will be appended to the mangled name.
+is a reference, a single ``&`` will be appended to the mangled name.
 
 For example, if the type is
 
 .. code-block::
 
-	&**i32
+	type my_type = &**i32
 
-The resulting mangled type name will be ``sIPPR``.
+the resulting mangled type name will be ``sI**&``.
 The same applies for derived types whose backing type is a UDT.
 
+Generic Type Mangling
+---------------------
 Another case which involes mangling of the type name is when
 the given type has any number of generic parameters.
 The compiler will append a pair of angle brackets (``<>``) to the mangled type name
@@ -80,13 +82,19 @@ For example, if the type is
 
 	struct Foo<T, U> { /* ... */ }
 
-And its usage looks as follows
+and its usage looks as follows
 
 .. code-block::
 
-	Foo<bool, usize>
+	Foo<bool, String>
 
-The resulting mangled type name will be ``Foo<TuZ>``.
+the resulting mangled type name will be ``Foo<'T@std.String>``.
+
+.. note:: 
+
+	Note that builtin types are always preceded by a single ``'``
+	while user defined types are always preceded by a single ``@``
+	within the angle brackets of a mangled generic parameter list.
 
 Function Mangling
 -----------------
@@ -100,9 +108,18 @@ For example, the function
 .. code-block::
 
 	pub mod foo {
-	    fun test_function(offset: isize, size: usize): *void {
+	    fun test_function(offset: isize, size: String): *void {
 	        // ...
 	    }
 	}
 
-will have a mangled name of ``foo.test_function(sZuZ)``.
+will have a mangled name of ``foo.test_function('sZ@std.String)``.
+
+.. note:: 
+
+	Note that builtin types are always preceded by a single ``'``
+	while user defined types are always preceded by a single ``@``
+	within the parentheses of a mangled function parameter list.
+
+Generic Function Mangling
+-------------------------
