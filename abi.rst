@@ -123,3 +123,23 @@ will have a mangled name of ``foo.test_function('sZ@std.String)``.
 
 Generic Function Mangling
 -------------------------
+Just like with generic type mangling, the angle brackets ``<>`` are used to denote
+generic parameters on a function when its name is mangled.
+
+The following function
+
+.. code-block::
+
+	pub mod foo {
+		pub fun testing<T>(value: &T, flag: bool): f32 {
+			// ...
+		}
+	}
+
+with a usage of 
+
+.. code-block::
+
+	let x: f32 = testing<i32>(100, true)
+
+would have a mangled name of ``foo.testing<'sI>('sI'T)`` after monomorphization.
