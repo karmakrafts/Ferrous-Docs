@@ -63,7 +63,7 @@ For example, if the type is
 
 .. code-block::
 
-	type my_type = &**i32
+	type MyType = &**i32
 
 the resulting mangled type name will be ``sI**&``.
 The same applies for derived types whose backing type is a UDT.
@@ -80,13 +80,15 @@ For example, if the type is
 
 .. code-block::
 
-	struct Foo<T, U> { /* ... */ }
+	struct Foo<T, U> { 
+	    // ...
+	}
 
 and its usage looks as follows
 
 .. code-block::
 
-	Foo<bool, String>
+	type MyType = Foo<bool, std::String>
 
 the resulting mangled type name will be ``Foo<'T@std.String>``.
 
@@ -108,7 +110,7 @@ For example, the function
 .. code-block::
 
 	pub mod foo {
-	    fun test_function(offset: isize, size: String): *void {
+	    fun test_function(offset: isize, size: std::String): *void {
 	        // ...
 	    }
 	}
@@ -131,9 +133,9 @@ The following function
 .. code-block::
 
 	pub mod foo {
-		pub fun testing<T>(value: &T, flag: bool): f32 {
-			// ...
-		}
+	    pub fun testing<T>(value: &T, flag: bool): f32 {
+	        // ...
+	    }
 	}
 
 with a usage of 
@@ -142,4 +144,4 @@ with a usage of
 
 	let x: f32 = testing<i32>(100, true)
 
-would have a mangled name of ``foo.testing<'sI>('sI'T)`` after monomorphization.
+would have a mangled name of ``foo.testing<'sI>('sI&'T)`` after monomorphization.
