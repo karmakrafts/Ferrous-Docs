@@ -7,7 +7,7 @@ sys.path.append(os.path.relpath('modules'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Ferrous'
+project = 'Home'
 copyright = '2023 Karma Krafts & associates'
 author = 'Alexander Hinze'
 
@@ -28,4 +28,5 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'sphinx_rtd_theme'
 html_favicon = 'favicon.png'
+html_logo = 'logo.png'
 html_static_path = ['static']

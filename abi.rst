@@ -5,6 +5,9 @@ way of how the compiler mangles names of types and functions.
 If a compiler implementation implements the ABI correctly, it produces
 modules which are binary compatible to Ferrous modules.
 
+The base of a mangled name is determined by it's sourrounding
+scope(s)
+
 Builtin Mangling
 ----------------
 Builtin types are treated specially during mangling to save some
@@ -90,3 +93,16 @@ Function Mangling
 Function mangling is always applied to prevent collissions for overloaded
 functions and monomorphized functions with generic parameters.
 
+In any case, the parameter types of the functions are mangled and concatinated
+before they're appended to the mangled function name between a pair of parentheses ``()``.
+For example, the function
+
+.. code-block:: Ferrous
+
+	pub mod foo {
+	    fun test_function(offset: isize, size: usize): *void {
+	        // ...
+	    }
+	}
+
+will have a mangled name of ``foo.test_function(sZuZ)``.
