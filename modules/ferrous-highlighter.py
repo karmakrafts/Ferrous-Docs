@@ -173,8 +173,8 @@ class FerrousLexer(RegexLexer):
             include('default')
         ],
         'generic_param': [
-            (r'(\s*?)(<)([^>]+)(>)(\s*?)', 
-                bygroups(Whitespace, Punctuation, using(this), Punctuation, Whitespace))
+            (r'(<)([^>]+)(>)', 
+                bygroups(Punctuation, using(this), Punctuation))
         ],
         'attrib_usage': [
             (r'@\s*\b[a-zA-Z_]+[a-zA-Z_0-9]*\b', Name.Decorator)
