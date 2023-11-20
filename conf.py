@@ -7,26 +7,28 @@ sys.path.append(os.path.relpath('modules'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Home'
+project = 'Ferrous'
 copyright = '2023 Karma Krafts & associates'
 author = 'Alexander Hinze'
+version = '1.0'
+release = 'nightly'
+language = 'en'
 
 # -- General configuration ---------------------------------------------------
 
 extensions = [
 	'sphinx.ext.autosectionlabel',
-	'sphinx_rtd_dark_mode',
-	'sphinx_new_tab_link',
 	'ferrous-highlighter'
 ]
 
 autosectionlabel_prefix_document = True
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+highlight_language = 'Ferrous'
 
 # -- Options for HTML output -------------------------------------------------
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_book_theme'
 html_favicon = 'favicon.png'
 html_logo = 'logo.png'
 html_static_path = ['static']

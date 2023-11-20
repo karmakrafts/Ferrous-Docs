@@ -61,7 +61,7 @@ is a reference, a single ``R`` will be appended to the mangled name.
 
 For example, if the type is
 
-.. code-block:: Ferrous
+.. code-block::
 
 	&**i32
 
@@ -76,13 +76,13 @@ type names during monomorphization of the given UDT.
 
 For example, if the type is
 
-.. code-block:: Ferrous
+.. code-block::
 
 	struct Foo<T, U> { /* ... */ }
 
 And its usage looks as follows
 
-.. code-block:: Ferrous
+.. code-block::
 
 	Foo<bool, usize>
 
@@ -97,7 +97,7 @@ In any case, the parameter types of the functions are mangled and concatinated
 before they're appended to the mangled function name between a pair of parentheses ``()``.
 For example, the function
 
-.. code-block:: Ferrous
+.. code-block::
 
 	pub mod foo {
 	    fun test_function(offset: isize, size: usize): *void {
