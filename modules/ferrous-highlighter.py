@@ -19,7 +19,7 @@ class FerrousLexer(RegexLexer):
     filenames = ['*.ferrous', '*.fe']
     mimetypes = ['text/x-ferrous']
     flags = re.MULTILINE | re.DOTALL
-    tokens = {
+        tokens = {
         'comment': [
             (r'(//.*?)(\n)', 
                 bygroups(Comment.Single, Whitespace)),
@@ -35,6 +35,7 @@ class FerrousLexer(RegexLexer):
             include('mod_block'),
             include('udt'),
             include('function'),
+            include('statement'),
             include('misc_keyword'),
             include('default')
         ],
@@ -73,19 +74,38 @@ class FerrousLexer(RegexLexer):
             include('default')
         ],
         'function_type_return_type': [
-            (r'[,;:)\s\n]', Punctuation, '#pop'),
+            (r'[,;:)\s]', Punctuation, '#pop'),
+            include('type')
+        ],
+        'type_alias': [
+            (r'(\btype\b)(\s*)([^\s=]+)(\s*)', bygroups(Keyword, Whitespace, Name, Whitespace), 'type_alias_type')
+        ],
+        'type_alias_type': [
+            (r';|$', Punctuation, '#pop'),
+            include('type')
+        ],
+        'ptr_type': [
+            (r'\*', Punctuation, 'type_mode'),
+            include('type')
+        ],
+        'ref_type': [
+            (r'&', Punctuation, 'type_mode'),
+            include('type')
+        ],
+        'type_mode': [
+            (r'[,;)}\]\s\t\n]', Punctuation, '#pop'),
             include('type')
         ],
         'type': [
-            (r'(\bconst|mut|tls|atomic\b)', Keyword),
+            (r'\bmut\b', Keyword),
             include('function_type'),
+            include('ptr_type'),
+            include('ref_type'),
             include('primitive_keyword'),
             include('qualified_ident'),
             include('ident')
         ],
         'function': [
-            (r'(\bfun\b)(\s*?)([^\(\s]+)(\s*)(<)([^>]+)(>)(\s*)(\()', 
-                bygroups(Keyword, Whitespace, Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'function_sig'),
             (r'(\bfun\b)(\s*?)([^\(\s]+)(\()', 
                 bygroups(Keyword, Whitespace, Name.Function, Punctuation), 'function_sig'),
             include('statement')
@@ -109,17 +129,14 @@ class FerrousLexer(RegexLexer):
             include('default')
         ],
         'statement': [
+            include('type_alias'),
             include('variable'),
             include('return_statement'),
             include('expr')
         ],
         'call_expr': [
-            (r'([^:]+)(::)(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(<)([^>]+)(>)(\s*)(\()', 
-                bygroups(using(this), Punctuation, Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'call_expr_params'),
             (r'([^:]+)(::)(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(\()', 
                 bygroups(using(this), Punctuation, Name.Function, Whitespace, Punctuation), 'call_expr_params'),
-            (r'(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(<)([^>]+)(>)(\s*)(\()', 
-                bygroups(Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'call_expr_params'),
             (r'(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(\()', 
                 bygroups(Name.Function, Whitespace, Punctuation), 'call_expr_params')
         ],
@@ -177,7 +194,7 @@ class FerrousLexer(RegexLexer):
                 bygroups(Punctuation, using(this), Punctuation))
         ],
         'attrib_usage': [
-            (r'@\s*\b[a-zA-Z_]+[a-zA-Z_0-9]*\b', Name.Decorator)
+            (r'@\s*[a-zA-Z_]+[a-zA-Z_0-9]*(::[a-zA-Z_]+[a-zA-Z_0-9]*)*?', Name.Decorator)
         ],
         'callconv_mod': [
             (r'(\bcallconv\b)(\s*)(\()([^\)]+)(\))', 
@@ -229,11 +246,11 @@ class FerrousLexer(RegexLexer):
             (r'\b(null|true|false)\b', Keyword.Constant)
         ],
         'qualified_ident': [
-            (r'([^:]+)(::)([a-zA-Z_]+[a-zA-Z_0-9]*)', 
+            (r'([^:]+)(::)(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)', 
                 bygroups(using(this), Punctuation, Name)),
         ],
         'ident': [
-            (r'[a-zA-Z_]+[a-zA-Z_0-9]*', Name)
+            (r'\b[a-zA-Z_]+[a-zA-Z_0-9]*\b', Name)
         ],
         'string_literal': [
             include('cml_string'),
