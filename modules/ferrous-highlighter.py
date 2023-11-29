@@ -19,7 +19,7 @@ class FerrousLexer(RegexLexer):
     filenames = ['*.ferrous', '*.fe']
     mimetypes = ['text/x-ferrous']
     flags = re.MULTILINE | re.DOTALL
-        tokens = {
+    tokens = {
         'comment': [
             (r'(//.*?)(\n)', 
                 bygroups(Comment.Single, Whitespace)),
