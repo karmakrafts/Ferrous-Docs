@@ -35,9 +35,18 @@ The table below is a complete list of all available builtin types.
 	* - ``i64``
 	  - Signed Integer
 	  - 8
+	* - ``i128``
+	  - Signed Integer
+	  - 16
+	* - ``i256``
+	  - Signed Integer
+	  - 32
+	* - ``i512``
+	  - Signed Integer
+	  - 64
 	* - ``isize``
 	  - Signed Integer
-	  - 8 on 64-bit, 4 on 32-bit
+	  - GPR Width
 	* - ``u8``
 	  - Unsigned Integer
 	  - 1
@@ -50,12 +59,27 @@ The table below is a complete list of all available builtin types.
 	* - ``u64``
 	  - Unsigned Integer
 	  - 8
+	* - ``u128``
+	  - Unsigned Integer
+	  - 16
+	* - ``u256``
+	  - Unsigned Integer
+	  - 32
+	* - ``u512``
+	  - Unsigned Integer
+	  - 64
 	* - ``usize``
 	  - Unsigned Integer
-	  - 8 on 64-bit, 4 on 32-bit
+	  - GPR Width
+	* - ``f16``
+	  - IEEE-754
+	  - 2
 	* - ``f32``
 	  - IEEE-754
 	  - 4
 	* - ``f64``
 	  - IEEE-754
 	  - 8
+	* - ``f128``
+	  - IEEE-754
+	  - 16

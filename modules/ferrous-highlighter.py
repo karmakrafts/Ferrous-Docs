@@ -84,28 +84,17 @@ class FerrousLexer(RegexLexer):
             (r';|$', Punctuation, '#pop'),
             include('type')
         ],
-        'ptr_type': [
-            (r'\*', Punctuation, 'type_mode'),
-            include('type')
-        ],
-        'ref_type': [
-            (r'&', Punctuation, 'type_mode'),
-            include('type')
-        ],
-        'type_mode': [
-            (r'[,;)}\]\s\t\n]', Punctuation, '#pop'),
-            include('type')
-        ],
         'type': [
             (r'\bmut\b', Keyword),
             include('function_type'),
-            include('ptr_type'),
-            include('ref_type'),
             include('primitive_keyword'),
             include('qualified_ident'),
-            include('ident')
+            include('ident'),
+            (r'\*|&', Punctuation)
         ],
         'function': [
+            (r'(\bfun\b)(\s*?)([^\(\s]+)(\s*?)(<)([^>]+)(>)(\s*?)(\()', 
+                bygroups(Keyword, Whitespace, Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'function_sig'),
             (r'(\bfun\b)(\s*?)([^\(\s]+)(\()', 
                 bygroups(Keyword, Whitespace, Name.Function, Punctuation), 'function_sig'),
             include('statement')
@@ -135,8 +124,12 @@ class FerrousLexer(RegexLexer):
             include('expr')
         ],
         'call_expr': [
+            (r'([^:]+)(::)(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(<)([^>]+)(>)(\s*)(\()', 
+                bygroups(using(this), Punctuation, Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'call_expr_params'),
             (r'([^:]+)(::)(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(\()', 
                 bygroups(using(this), Punctuation, Name.Function, Whitespace, Punctuation), 'call_expr_params'),
+            (r'(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(<)([^>]+)(>)(\s*)(\()', 
+                bygroups(Name.Function, Whitespace, Punctuation, using(this), Punctuation, Whitespace, Punctuation), 'call_expr_params'),
             (r'(\b[a-zA-Z_]+[a-zA-Z_0-9]*\b)(\s*)(\()', 
                 bygroups(Name.Function, Whitespace, Punctuation), 'call_expr_params')
         ],
@@ -239,8 +232,7 @@ class FerrousLexer(RegexLexer):
              r'|\bget\b|\bset\b|(\bas\b\??)|(!?\bis\b)|(!?\bin\b)|\bop\b|\bif\b|\bdo\b)', Keyword)
         ],
         'primitive_keyword': [
-            (r'\b(isize|i64|i32|i16|i8|usize|u64|u32|u16|u8'
-             r'|f64|f32|void|char|bool|string)\b', Keyword.Type)
+            (r'\b(([iu]size)|void|char|bool|string)\b|([iu][0-9]+)|(f(16|32|64|128))', Keyword.Type)
         ],
         'literal_keyword': [
             (r'\b(null|true|false)\b', Keyword.Constant)

@@ -15,11 +15,11 @@ The official documentation source for the Ferrous programming language.
    :maxdepth: 4
    :caption: Contents:
 
-   abi
    modules
    types
    functions
    inline_asm
+   abi/abi
 
 Other Links
 ===========
