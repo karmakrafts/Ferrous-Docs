@@ -6,11 +6,6 @@ The official documentation source for the Ferrous programming language.
    This documentation is incomplete and still being
    worked on during the development of the language.
 
-.. warning::
-   The Pygments syntax highlighter for Ferrous is highly experimental
-   and you may experience some erroneous highlighting in certain cases.
-   This is actively being worked on.
-
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
