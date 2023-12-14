@@ -3,7 +3,7 @@
 
 import os
 import sys
-sys.path.append(os.path.relpath('modules'))
+sys.path.append(os.path.relpath('_modules'))
 
 # -- Project information -----------------------------------------------------
 

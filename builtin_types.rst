@@ -13,73 +13,77 @@ The table below is a complete list of all available builtin types.
 
 	* - Name
 	  - Category
-	  - Size (in bytes)
+	  - Size (in bits)
+	  - Min Value/Exponent Bits
+	  - Max Value/Significant Bits
 	* - ``void``
 	  - Sizeless
 	  - 0
+	  - none
+	  - none
 	* - ``char``
 	  - Signed Integer
-	  - 1
+	  - 8
+	  - :math:`-128`
+	  - :math:`127`
 	* - ``bool``
 	  - Truth Value
-	  - 1
-	* - ``i8``
-	  - Signed Integer
-	  - 1
-	* - ``i16``
-	  - Signed Integer
-	  - 2
-	* - ``i32``
-	  - Signed Integer
-	  - 4
-	* - ``i64``
-	  - Signed Integer
-	  - 8
-	* - ``i128``
-	  - Signed Integer
-	  - 16
-	* - ``i256``
-	  - Signed Integer
-	  - 32
-	* - ``i512``
-	  - Signed Integer
-	  - 64
+	  - 1 (8)
+	  - :math:`0`
+	  - :math:`1`
+	* - ``i<n>``
+	  - `Signed Integer`_
+	  - n
+	  - :math:`2^{n-1}`
+	  - :math:`2^{n-1}-1`
 	* - ``isize``
-	  - Signed Integer
-	  - GPR Width
-	* - ``u8``
-	  - Unsigned Integer
-	  - 1
-	* - ``u16``
-	  - Unsigned Integer
-	  - 2
-	* - ``u32``
-	  - Unsigned Integer
-	  - 4
-	* - ``u64``
-	  - Unsigned Integer
-	  - 8
-	* - ``u128``
-	  - Unsigned Integer
-	  - 16
-	* - ``u256``
-	  - Unsigned Integer
-	  - 32
-	* - ``u512``
-	  - Unsigned Integer
-	  - 64
+	  - Signed Size Type
+	  - GPR Width (w)
+	  - :math:`2^{w-1}`
+	  - :math:`2^{w-1}-1`
+	* - ``u<n>``
+	  - `Unsigned Integer`_
+	  - n
+	  - :math:`0`
+	  - :math:`2^n`
 	* - ``usize``
-	  - Unsigned Integer
-	  - GPR Width
+	  - Unsigned Size Type
+	  - GPR Width (w)
+	  - :math:`0`
+	  - :math:`2^w`
 	* - ``f16``
 	  - IEEE-754
-	  - 2
+	  - 16
+	  - 5 Bits
+	  - 10 Bits
 	* - ``f32``
 	  - IEEE-754
-	  - 4
+	  - 32
+	  - 8 Bits
+	  - 23 Bits
 	* - ``f64``
 	  - IEEE-754
-	  - 8
+	  - 64
+	  - 11 Bits
+	  - 52 Bits
 	* - ``f128``
 	  - IEEE-754
-	  - 16
+	  - 128
+	  - 15 Bits
+	  - 112 Bits
+
+.. _Signed Integer:
+
+Signed Integer
+~~~~~~~~~~~~~~
+
+A signed integer is an integer which may be negative or positive, but
+has half the numeric range of its unsigned counterpart.
+
+.. _Unsigned Integer:
+
+Unsigned Integer
+~~~~~~~~~~~~~~~~
+
+An unsigned integer is an integer which may only be positive, but
+has double the numeric range of its signed counterpart.

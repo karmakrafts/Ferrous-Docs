@@ -9,10 +9,9 @@ For example, the function
 
 .. code-block::
 
-	pub mod foo {
-	    fun test_function(offset: isize, value: std::String): void* {
-	        // ...
-	    }
+	// Function in foo.fe
+	fun test_function(offset: isize, value: std::String): void* {
+		// ...
 	}
 
 will have a mangled name of ``foo.test_function('SZ@std.String)``.

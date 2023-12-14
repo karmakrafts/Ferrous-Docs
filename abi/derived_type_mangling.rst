@@ -26,11 +26,13 @@ and their mangled symbol counterparts:
 	* - Keyword
 	  - Mangled Symbol
 	* - ``mut``
-	  - !
+	  - =
 	* - ``tls``
 	  - ^
 	* - ``atomic``
 	  - $
+	* - ``volatile``
+	  - !
 
 A simple example of this would be the following type alias:
 
@@ -38,11 +40,20 @@ A simple example of this would be the following type alias:
 
 	type MyRefType = atomic i32&
 
-Where the mangled name of the type would be ``S32$&`` where the ``$``
-precedes the derived type attribute ``&``. This applies to all mangled modifiers.
+Where the mangled name of the type would be ``$S32&`` where the ``$``
+precedes the derived type attribute ``&`` and the type itself. This applies to all mangled modifiers.
 
 .. note::
 	
 	While the order in which the attribute appears after the modifiers is always
 	fixed, the order of the modifiers itself does not have to be and modifiers may
 	appear in any order.
+
+If the modifier applies to the attribute like in the example below
+
+.. code-block::
+
+	type MyPtrType = i32 mut atomic*
+
+The mangled name of the above type would be ``S32=$*``, since the modifiers always apply to 
+whatever is on their righthand side.

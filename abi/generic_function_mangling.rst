@@ -7,10 +7,9 @@ The following function
 
 .. code-block::
 
-	pub mod foo {
-	    pub fun testing<T>(value: T&, flag: bool): f32 {
-	        // ...
-	    }
+	// Function in foo.fe
+	pub fun testing<T>(value: T&, flag: bool): f32 {
+		// ...
 	}
 
 with a usage of 
