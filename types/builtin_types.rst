@@ -37,7 +37,7 @@ The table below is a complete list of all available builtin types.
 	  - :math:`-(2^{n-1})`
 	  - :math:`2^{n-1}-1`
 	* - ``isize``
-	  - Signed Size Type
+	  - `Signed Size Type`_
 	  - GPR Width (w)
 	  - :math:`-(2^{w-1})`
 	  - :math:`2^{w-1}-1`
@@ -47,27 +47,27 @@ The table below is a complete list of all available builtin types.
 	  - :math:`0`
 	  - :math:`2^n`
 	* - ``usize``
-	  - Unsigned Size Type
+	  - `Unsigned Size Type`_
 	  - GPR Width (w)
 	  - :math:`0`
 	  - :math:`2^w`
 	* - ``f16``
-	  - IEEE-754
+	  - `IEEE-754 Half-Precision`_
 	  - 16
 	  - 5 Bits
 	  - 10 Bits
 	* - ``f32``
-	  - IEEE-754
+	  - `IEEE-754 Single-Precision`_
 	  - 32
 	  - 8 Bits
 	  - 23 Bits
 	* - ``f64``
-	  - IEEE-754
+	  - `IEEE-754 Double-Precision`_
 	  - 64
 	  - 11 Bits
 	  - 52 Bits
 	* - ``f128``
-	  - IEEE-754
+	  - `IEEE-754 Quadruple-Precision`_
 	  - 128
 	  - 15 Bits
 	  - 112 Bits
@@ -80,6 +80,15 @@ Signed Integer
 A signed integer is an integer which may be negative or positive, but
 has half the numeric range of its unsigned counterpart.
 
+.. _Signed Size Type:
+
+Signed Size Type
+~~~~~~~~~~~~~~~~
+
+A signed size type is guaranteed to be the size of a general-purpose
+register on the target architecture, and has half the numeric range
+of its unsigned counterpart since it can be negative.
+
 .. _Unsigned Integer:
 
 Unsigned Integer
@@ -87,3 +96,44 @@ Unsigned Integer
 
 An unsigned integer is an integer which may only be positive, but
 has double the numeric range of its signed counterpart.
+
+.. _Unsigned Size Type:
+
+Unsigned Size Type
+~~~~~~~~~~~~~~~~~~
+
+An unsigned size type is guaranteed to be the size of a general-purpose
+register on the target architecture, and has double the numeric range
+of its signed counterpart since it cannot be negative.
+
+.. _IEEE-754 Half-Precision:
+
+IEEE-754 Half-Precision
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+	:file: ../_images/IEEE754-HP.svg
+
+.. _IEEE-754 Single-Precision:
+
+IEEE-754 Single-Precision
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+	:file: ../_images/IEEE754-SP.svg
+
+.. _IEEE-754 Double-Precision:
+
+IEEE-754 Double-Precision
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+	:file: ../_images/IEEE754-DP.svg
+
+.. _IEEE-754 Quadruple-Precision:
+
+IEEE-754 Quadruple-Precision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+	:file: ../_images/IEEE754-QP.svg

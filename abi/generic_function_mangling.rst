@@ -1,5 +1,6 @@
 Generic Function Mangling
 =========================
+
 Just like with generic type mangling, the angle brackets ``<>`` are used to denote
 generic parameters on a function when its name is mangled.
 

@@ -1,5 +1,6 @@
 Generic Type Mangling
 =====================
+
 Another case which involes mangling of the type name is when
 the given type has any number of generic parameters.
 The compiler will append a pair of angle brackets (``<>``) to the mangled type name

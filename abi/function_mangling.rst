@@ -1,5 +1,6 @@
 Function Mangling
 =================
+
 Function mangling is always applied to prevent collissions for overloaded
 functions and monomorphized functions with generic parameters.
 

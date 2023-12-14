@@ -1,5 +1,6 @@
 Ferrous Documentation
 =====================
+
 The official documentation source for the Ferrous programming language.
 
 .. warning::
@@ -11,13 +12,14 @@ The official documentation source for the Ferrous programming language.
    :caption: Contents:
 
    modules
-   types
+   types/types
    functions
    inline_asm
    abi/abi
 
 Other Links
 ===========
+
 Other links related to the Ferrous project like repositories and references.
 
 * `Vanadium BSC Frontend`_

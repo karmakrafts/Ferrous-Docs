@@ -32,3 +32,5 @@ html_theme = 'sphinx_book_theme'
 html_favicon = 'favicon.png'
 html_logo = 'logo.png'
 html_static_path = ['static']
+html_css_files = ['_styles/ferrous_docs.css']
+html_style = 'css/ferrous_docs.css'

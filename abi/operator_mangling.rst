@@ -1,5 +1,6 @@
 Operator Mangling
------------------
+=================
+
 Operators also require some form of mangling to allow overloading them in
 user defined types. Ferrous simply looks up operators by their symbol and
 retrieves their mangled name from an enum. 

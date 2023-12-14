@@ -1,5 +1,6 @@
 Builtin Type Mangling
 =====================
+
 Builtin types are treated specially during mangling to save some
 space in the identifier strings of types and functions.
 The following table denotes all valid mangled builtin type names:
