@@ -34,12 +34,12 @@ The table below is a complete list of all available builtin types.
 	* - ``i<n>``
 	  - `Signed Integer`_
 	  - n
-	  - :math:`2^{n-1}`
+	  - :math:`-(2^{n-1})`
 	  - :math:`2^{n-1}-1`
 	* - ``isize``
 	  - Signed Size Type
 	  - GPR Width (w)
-	  - :math:`2^{w-1}`
+	  - :math:`-(2^{w-1})`
 	  - :math:`2^{w-1}-1`
 	* - ``u<n>``
 	  - `Unsigned Integer`_
