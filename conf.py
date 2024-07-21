@@ -8,9 +8,9 @@ sys.path.append(os.path.relpath('_modules'))
 # -- Project information -----------------------------------------------------
 
 project = 'Ferrous'
-copyright = '2023 Karma Krafts & associates'
+copyright = '2024 Karma Krafts & associates'
 author = 'Alexander Hinze'
-version = '1.0'
+version = '1.1'
 release = 'nightly'
 language = 'en'
 
@@ -32,4 +32,5 @@ highlight_language = 'Ferrous'
 html_theme = 'sphinx_rtd_theme'
 html_favicon = 'favicon.png'
 html_logo = 'logo.png'
-html_static_path = ['static']
+html_static_path = ['_static']
+html_css_files = ['css/custom.css']
