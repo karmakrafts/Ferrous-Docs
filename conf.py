@@ -19,7 +19,7 @@ language = 'en'
 extensions = [
 	'sphinx_rtd_dark_mode',
 	'sphinx.ext.autosectionlabel',
-	'ferrous-highlighter'
+	'ferrous-pygments'
 ]
 
 autosectionlabel_prefix_document = True

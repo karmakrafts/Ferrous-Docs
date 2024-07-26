@@ -14,7 +14,6 @@ The official documentation source for the Ferrous programming language.
    modules
    types/types
    functions
-   inline_asm
    abi/abi
 
 Other Links

@@ -3,6 +3,8 @@ stages:
 build:
   stage: build
   script:
+    - pip3 install -r requirements.txt --upgrade
+    - pip3 install ferrous-pygments --upgrade --index-url https://git.karmakrafts.dev/api/v4/projects/277/packages/pypi/simple
     - make html
     - mv -f _build/html _build/ferrous-docs
     - cp -r _build/ferrous-docs /var/www
