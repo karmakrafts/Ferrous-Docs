@@ -11,11 +11,11 @@ The official documentation source for the Ferrous programming language.
    :maxdepth: 4
    :caption: Contents:
 
-   modules
+   root/modules
    types/types
-   arithmetic
-   functions
-   scopes
+   root/arithmetic
+   root/functions
+   root/scopes
    control_flow/control_flow
    abi/abi
 
