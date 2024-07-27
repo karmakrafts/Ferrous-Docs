@@ -1,7 +1,8 @@
+build==1.2.1
 twine==5.1.1
 antlr4-python3-runtime==4.13.1
 Pygments==2.18.0
-vanadium==2.0.0.142
-ferrous-pygments==1.0.0.19
+vanadium==2.0.143
+ferrous-pygments==1.0.21
 sphinx-rtd-theme==2.0.0
-sphinx-rtd-dark==1.0.0.10
+sphinx-rtd-dark==1.0.15
