@@ -20,7 +20,7 @@ extensions = [
 
 autosectionlabel_prefix_document = True
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-highlight_language = 'Ferrous'
+highlight_language = 'ferrous'
 
 # -- Options for HTML output -------------------------------------------------
 
