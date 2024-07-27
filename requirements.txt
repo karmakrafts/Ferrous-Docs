@@ -1,3 +1,7 @@
-twine
-antlr4-python3-runtime
-Pygments
+twine==5.1.1
+antlr4-python3-runtime==4.13.1
+Pygments==2.18.0
+vanadium==2.0.0.142
+ferrous-pygments==1.0.0.19
+sphinx-rtd-theme==2.0.0
+sphinx-rtd-dark==1.0.0.10

@@ -13,7 +13,10 @@ The official documentation source for the Ferrous programming language.
 
    modules
    types/types
+   arithmetic
    functions
+   scopes
+   control_flow/control_flow
    abi/abi
 
 Other Links
@@ -21,12 +24,12 @@ Other Links
 
 Other links related to the Ferrous project like repositories and references.
 
-* `Vanadium BSC Frontend`_
-* `Manganese BSC Backend`_
+* `Vanadium Bootstrap Frontend`_
+* `Manganese Bootstrap Backend`_
 * `Syntax Highlighters`_
 * `Documentation`_
 
-.. _Vanadium BSC Frontend: https://git.karmakrafts.dev/kk/ferrous-project/vanadium
-.. _Manganese BSC Backend: https://git.karmakrafts.dev/kk/ferrous-project/manganese
+.. _Vanadium Bootstrap Frontend: https://git.karmakrafts.dev/kk/ferrous-project/vanadium
+.. _Manganese Bootstrap Backend: https://git.karmakrafts.dev/kk/ferrous-project/manganese
 .. _Syntax Highlighters: https://git.karmakrafts.dev/kk/ferrous-project/ferrous-syntax
 .. _Documentation: https://git.karmakrafts.dev/kk/ferrous-project/ferrous-docs
